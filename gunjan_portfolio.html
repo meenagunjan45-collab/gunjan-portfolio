@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gunjan Meena | Environmental Scientist</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #1a3a2a;
+    --moss: #2d5a3d;
+    --sage: #5a8a6a;
+    --mint: #8fbfa0;
+    --cream: #f4f0e6;
+    --warm: #e8dcc8;
+    --earth: #a0785a;
+    --sun: #d4a853;
+    --text: #1a2a1a;
+    --light-text: #4a6a4a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* CUSTOM CURSOR */
+  .cursor {
+    width: 12px; height: 12px;
+    background: var(--sage);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.15s ease;
+    mix-blend-mode: multiply;
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1.5px solid var(--sage);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9998;
+    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    opacity: 0.6;
+  }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    background: var(--forest);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-rings {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+  .ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(143,191,160,0.12);
+    animation: pulseRing 8s ease-in-out infinite;
+  }
+  .ring:nth-child(1) { width: 600px; height: 600px; top: -150px; right: -150px; animation-delay: 0s; }
+  .ring:nth-child(2) { width: 900px; height: 900px; top: -300px; right: -300px; animation-delay: 1s; }
+  .ring:nth-child(3) { width: 400px; height: 400px; bottom: -100px; left: -100px; animation-delay: 2s; }
+  @keyframes pulseRing { 0%,100% { opacity: 0.4; transform: scale(1); } 50% { opacity: 0.8; transform: scale(1.05); } }
+
+  .leaf-float {
+    position: absolute;
+    opacity: 0.06;
+    animation: leafDrift linear infinite;
+  }
+  @keyframes leafDrift {
+    0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.06; }
+    90% { opacity: 0.06; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px 80px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .tag {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--mint);
+    border: 1px solid rgba(143,191,160,0.35);
+    padding: 6px 14px;
+    border-radius: 2px;
+    margin-bottom: 32px;
+    width: fit-content;
+    animation: fadeSlideUp 0.8s 0.2s both;
+  }
+
+  h1.hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 7vw, 88px);
+    font-weight: 900;
+    line-height: 0.95;
+    color: var(--cream);
+    animation: fadeSlideUp 0.8s 0.4s both;
+    margin-bottom: 28px;
+  }
+  h1.hero-name em {
+    font-style: italic;
+    color: var(--mint);
+    display: block;
+  }
+
+  .hero-tagline {
+    font-size: 16px;
+    color: rgba(244,240,230,0.65);
+    line-height: 1.8;
+    max-width: 420px;
+    animation: fadeSlideUp 0.8s 0.6s both;
+    margin-bottom: 48px;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    animation: fadeSlideUp 0.8s 0.8s both;
+  }
+  .btn-primary {
+    background: var(--mint);
+    color: var(--forest);
+    padding: 14px 32px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    border: none;
+    cursor: none;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--cream); transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--mint);
+    padding: 14px 32px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    border: 1px solid rgba(143,191,160,0.4);
+    cursor: none;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--mint); background: rgba(143,191,160,0.08); transform: translateY(-2px); }
+
+  .hero-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    padding: 80px 60px;
+  }
+
+  .hero-photo-wrap {
+    position: relative;
+    animation: fadeSlideUp 1s 0.5s both;
+  }
+  .hero-photo-bg {
+    width: 340px; height: 420px;
+    background: var(--moss);
+    position: absolute;
+    top: 20px; left: 20px;
+    z-index: 0;
+  }
+  .hero-photo {
+    width: 340px; height: 420px;
+    object-fit: cover;
+    object-position: top center;
+    position: relative;
+    z-index: 1;
+    filter: grayscale(20%);
+    transition: filter 0.4s ease;
+  }
+  .hero-photo:hover { filter: grayscale(0%); }
+  .hero-photo-accent {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 120px; height: 120px;
+    border: 2px solid var(--sun);
+    z-index: 0;
+  }
+
+  .gate-badge {
+    position: absolute;
+    top: -20px;
+    right: -50px;
+    background: var(--sun);
+    color: var(--forest);
+    padding: 16px 20px;
+    text-align: center;
+    z-index: 3;
+    animation: rotateBadge 12s linear infinite;
+    width: 110px; height: 110px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  }
+  @keyframes rotateBadge { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+  .gate-badge-inner { animation: rotateBadgeInner 12s linear infinite; text-align: center; }
+  @keyframes rotateBadgeInner { 0% { transform: rotate(0deg); } 100% { transform: rotate(-360deg); } }
+  .gate-badge .label { font-family: 'Space Mono', monospace; font-size: 8px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; display: block; }
+  .gate-badge .rank { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 900; display: block; line-height: 1; }
+
+  @keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 24px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.4s ease;
+  }
+  nav.scrolled {
+    background: rgba(26,58,42,0.95);
+    backdrop-filter: blur(12px);
+    padding: 16px 80px;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.2);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--cream);
+    text-decoration: none;
+    letter-spacing: 1px;
+  }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(244,240,230,0.7);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    cursor: none;
+  }
+  .nav-links a:hover { color: var(--mint); }
+
+  /* SECTION BASE */
+  section { padding: 120px 80px; }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::after { content: ''; flex: 0 0 40px; height: 1px; background: var(--sage); }
+
+  h2.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 60px;
+    color: var(--forest);
+  }
+
+  /* ABOUT */
+  #about {
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--warm);
+  }
+  .stat-box {
+    background: var(--cream);
+    padding: 36px 32px;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-box::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--sage);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .stat-box:hover::after { transform: scaleX(1); }
+  .stat-box:hover { background: var(--forest); color: var(--cream); }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 900;
+    color: var(--sage);
+    line-height: 1;
+    display: block;
+    margin-bottom: 8px;
+    transition: color 0.4s ease;
+  }
+  .stat-box:hover .stat-num { color: var(--mint); }
+  .stat-label { font-size: 12px; color: var(--light-text); letter-spacing: 1px; transition: color 0.4s ease; }
+  .stat-box:hover .stat-label { color: rgba(244,240,230,0.7); }
+
+  .about-text p {
+    font-size: 16px;
+    line-height: 1.9;
+    color: var(--light-text);
+    margin-bottom: 20px;
+  }
+  .about-text p strong { color: var(--forest); font-weight: 500; }
+
+  /* SKILLS */
+  #skills {
+    background: var(--forest);
+    color: var(--cream);
+  }
+  #skills h2.section-title { color: var(--cream); }
+  #skills .section-label { color: var(--mint); }
+  #skills .section-label::after { background: var(--mint); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: rgba(143,191,160,0.08);
+  }
+  .skill-card {
+    background: var(--forest);
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(143,191,160,0.06);
+  }
+  .skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, rgba(143,191,160,0.06) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .skill-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+  .skill-card:hover::before { opacity: 1; }
+  .skill-icon {
+    font-size: 36px;
+    margin-bottom: 24px;
+    display: block;
+  }
+  .skill-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 16px;
+  }
+  .skill-items {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .skill-items li {
+    font-size: 11px;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 0.5px;
+    background: rgba(143,191,160,0.12);
+    color: var(--mint);
+    padding: 5px 12px;
+    border-radius: 2px;
+    border: 1px solid rgba(143,191,160,0.2);
+    transition: all 0.3s;
+  }
+  .skill-items li:hover { background: rgba(143,191,160,0.25); }
+
+  /* PROJECTS */
+  #projects { background: var(--warm); }
+
+  .project-card {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 40px;
+    padding: 52px 0;
+    border-bottom: 1px solid rgba(26,58,42,0.12);
+    align-items: start;
+    transition: all 0.4s ease;
+    position: relative;
+  }
+  .project-card:first-of-type { padding-top: 0; }
+  .project-card::before {
+    content: '';
+    position: absolute;
+    left: -80px; right: -80px; top: 0; bottom: 0;
+    background: rgba(26,58,42,0.04);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+  .project-card:hover::before { opacity: 1; }
+
+  .project-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 900;
+    color: rgba(26,58,42,0.1);
+    line-height: 1;
+    transition: color 0.4s ease;
+  }
+  .project-card:hover .project-num { color: rgba(90,138,106,0.3); }
+  .project-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+  .project-meta {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .project-meta span {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--sage);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .project-desc {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--light-text);
+  }
+  .project-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .project-tag {
+    font-size: 11px;
+    padding: 4px 12px;
+    border: 1px solid rgba(26,58,42,0.2);
+    color: var(--forest);
+    border-radius: 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+  }
+
+  /* CERTIFICATIONS */
+  #certifications { background: var(--cream); }
+  .cert-timeline { position: relative; padding-left: 40px; }
+  .cert-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px; bottom: 8px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--mint), var(--sage), var(--forest));
+  }
+  .cert-item {
+    position: relative;
+    padding: 0 0 52px 48px;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.6s ease;
+  }
+  .cert-item.visible { opacity: 1; transform: translateX(0); }
+  .cert-item::before {
+    content: '';
+    position: absolute;
+    left: -5px; top: 6px;
+    width: 12px; height: 12px;
+    background: var(--mint);
+    border-radius: 50%;
+    border: 3px solid var(--cream);
+    box-shadow: 0 0 0 2px var(--mint);
+    transition: all 0.4s ease;
+  }
+  .cert-item:hover::before { transform: scale(1.5); background: var(--sun); box-shadow: 0 0 0 2px var(--sun); }
+  .cert-org {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 8px;
+  }
+  .cert-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .cert-desc { font-size: 14px; line-height: 1.8; color: var(--light-text); max-width: 600px; }
+
+  /* CONTACT */
+  #contact {
+    background: var(--forest);
+    color: var(--cream);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  #contact::before {
+    content: 'CONNECT';
+    position: absolute;
+    font-family: 'Playfair Display', serif;
+    font-size: 200px;
+    font-weight: 900;
+    color: rgba(143,191,160,0.04);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    letter-spacing: -5px;
+    pointer-events: none;
+  }
+  #contact h2.section-title { color: var(--cream); margin-bottom: 16px; }
+  #contact .section-label { justify-content: center; color: var(--mint); }
+  #contact .section-label::after, #contact .section-label::before { content: ''; flex: 0 0 40px; height: 1px; background: var(--mint); }
+  .contact-sub { color: rgba(244,240,230,0.6); font-size: 16px; max-width: 500px; margin: 0 auto 60px; line-height: 1.8; }
+  .contact-links {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 32px;
+    border: 1px solid rgba(143,191,160,0.25);
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.4s ease;
+    cursor: none;
+    background: transparent;
+  }
+  .contact-link:hover { background: var(--mint); color: var(--forest); border-color: var(--mint); transform: translateY(-4px); }
+  .contact-link .icon { font-size: 20px; }
+  .contact-link .info { text-align: left; }
+  .contact-link .info .label2 { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.6; display: block; margin-bottom: 3px; }
+  .contact-link .info .value { font-size: 14px; font-weight: 500; }
+
+  /* FOOTER */
+  footer {
+    background: #0f2218;
+    color: rgba(244,240,230,0.4);
+    text-align: center;
+    padding: 32px 80px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* SCROLL REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* PROGRESS BAR */
+  .progress-bar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--mint), var(--sun));
+    z-index: 200;
+    transition: width 0.1s;
+  }
+
+  /* MOBILE */
+  @media (max-width: 900px) {
+    #hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-right { display: none; }
+    .hero-left { padding: 120px 32px 80px; }
+    section { padding: 80px 32px; }
+    nav { padding: 20px 32px; }
+    nav.scrolled { padding: 14px 32px; }
+    .nav-links { display: none; }
+    #about { grid-template-columns: 1fr; gap: 48px; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .project-card { grid-template-columns: 1fr; gap: 0; }
+    .project-num { display: none; }
+    footer { padding: 24px 32px; }
+    #contact::before { font-size: 80px; }
+  }
+
+  /* PARTICLE CANVAS */
+  #particles { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="progress-bar" id="progressBar"></div>
+
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">GM</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="particles"></canvas>
+  <div class="hero-bg-rings">
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="ring"></div>
+  </div>
+
+  <div class="hero-left">
+    <span class="tag">Environmental Scientist</span>
+    <h1 class="hero-name">Gunjan<em>Meena</em></h1>
+    <p class="hero-tagline">Postgraduate researcher at Central University of Rajasthan, integrating environmental science with public health, sustainability, and field-based inquiry.</p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="#contact" class="btn-outline">Get In Touch</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-photo-wrap">
+      <div class="gate-badge">
+        <div class="gate-badge-inner">
+          <span class="label">GATE 2026</span>
+          <span class="rank">AIR</span>
+          <span class="label">1131</span>
+        </div>
+      </div>
+      <div class="hero-photo-bg"></div>
+      <!-- Placeholder silhouette since we can't embed the actual photo -->
+      <svg class="hero-photo" viewBox="0 0 340 420" xmlns="http://www.w3.org/2000/svg" style="position:relative;z-index:1;">
+        <rect width="340" height="420" fill="#2d5a3d"/>
+        <ellipse cx="170" cy="145" rx="65" ry="72" fill="#5a8a6a" opacity="0.8"/>
+        <ellipse cx="170" cy="330" rx="120" ry="90" fill="#5a8a6a" opacity="0.6"/>
+        <text x="170" y="230" text-anchor="middle" fill="rgba(143,191,160,0.4)" font-family="Playfair Display, serif" font-size="11" letter-spacing="3">GUNJAN MEENA</text>
+        <circle cx="170" cy="145" r="65" fill="none" stroke="rgba(143,191,160,0.2)" stroke-width="1"/>
+        <text x="170" y="390" text-anchor="middle" fill="rgba(244,240,230,0.2)" font-family="Space Mono" font-size="9" letter-spacing="2">ENV. SCIENTIST</text>
+      </svg>
+      <div class="hero-photo-accent"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-left">
+    <div class="section-label reveal">About Me</div>
+    <h2 class="section-title reveal">Science Meets<br>Sustainability</h2>
+    <div class="about-stats reveal">
+      <div class="stat-box">
+        <span class="stat-num" data-target="5">0</span>
+        <span class="stat-label">Years of Study</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num" data-target="10">0</span>
+        <span class="stat-label">WHO Certifications</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num" data-target="4">0</span>
+        <span class="stat-label">NPTEL Courses</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num" data-target="1131">0</span>
+        <span class="stat-label">GATE AIR Rank</span>
+      </div>
+    </div>
+  </div>
+  <div class="about-text reveal">
+    <p>I am a postgraduate student specializing in <strong>Environmental Science</strong> at the Central University of Rajasthan, with a deep passion for sustainability and public health.</p>
+    <p>My work integrates <strong>laboratory analysis</strong>, ecological fieldwork, and data-driven approaches to address real-world environmental challenges—from water quality assessment to biodiversity monitoring.</p>
+    <p>Trained through nationally and internationally recognized programs including <strong>WHO, UNEP, NPTEL, and CSE</strong>, I bring a multidisciplinary perspective to every project I undertake.</p>
+    <p>Qualified in <strong>GATE 2026</strong> with AIR 1131, I am actively seeking research and professional opportunities in environmental consulting, sustainability, and policy.</p>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label reveal">Expertise</div>
+  <h2 class="section-title reveal">Laboratory &<br>Technical Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <span class="skill-icon">💧</span>
+      <div class="skill-title">Water & Wastewater</div>
+      <ul class="skill-items">
+        <li>pH Analysis</li><li>TDS</li><li>DO</li><li>BOD</li><li>COD</li>
+        <li>Turbidity</li><li>Conductivity</li>
+      </ul>
+    </div>
+    <div class="skill-card reveal" style="transition-delay:0.1s">
+      <span class="skill-icon">🌿</span>
+      <div class="skill-title">Soil & Ecology</div>
+      <ul class="skill-items">
+        <li>Moisture Analysis</li><li>Organic Carbon</li>
+        <li>Quadrat Methods</li><li>Transect Surveys</li>
+        <li>Biodiversity Assessment</li>
+      </ul>
+    </div>
+    <div class="skill-card reveal" style="transition-delay:0.2s">
+      <span class="skill-icon">🌬️</span>
+      <div class="skill-title">Air Quality</div>
+      <ul class="skill-items">
+        <li>Pollutant Analysis</li><li>HVS Operation</li>
+        <li>RDS Sampling</li><li>Particulate Monitoring</li>
+      </ul>
+    </div>
+    <div class="skill-card reveal" style="transition-delay:0.3s">
+      <span class="skill-icon">🔬</span>
+      <div class="skill-title">Microbiology</div>
+      <ul class="skill-items">
+        <li>Media Preparation</li><li>Sterilization</li>
+        <li>Microbial Culturing</li><li>Isolation</li><li>Microscopy</li>
+      </ul>
+    </div>
+    <div class="skill-card reveal" style="transition-delay:0.4s">
+      <span class="skill-icon">🗺️</span>
+      <div class="skill-title">GIS & Mapping</div>
+      <ul class="skill-items">
+        <li>QGIS</li><li>ArcGIS</li><li>Google Earth</li>
+      </ul>
+    </div>
+    <div class="skill-card reveal" style="transition-delay:0.5s">
+      <span class="skill-icon">💻</span>
+      <div class="skill-title">Software</div>
+      <ul class="skill-items">
+        <li>Microsoft Excel</li><li>PowerPoint</li>
+        <li>Gmail</li><li>Data Visualization</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label reveal">Research</div>
+  <h2 class="section-title reveal">Projects &<br>Field Work</h2>
+
+  <div class="project-card reveal">
+    <div class="project-num">01</div>
+    <div>
+      <div class="project-meta">
+        <span>📍 Rajasthan, India</span>
+        <span>📅 Feb–Mar 2023</span>
+      </div>
+      <div class="project-title">Effect of pH on Growth and Chlorophyll Content of Chlorella</div>
+      <p class="project-desc">
+        Investigated the effect of varying pH levels (5, 7, 9, 11) on the growth and chlorophyll content of Chlorella algae using Bold Basal Medium. Designed controlled experiments with duplicates, adjusting pH using 1N HCl and 1N KOH, and monitored natural variation over 18 days. Found that alkaline conditions (pH 9–11) significantly enhanced chlorophyll production, contributing to understanding of optimal algal growth conditions.
+      </p>
+      <div class="project-tags">
+        <span class="project-tag">Phycology</span>
+        <span class="project-tag">pH Analysis</span>
+        <span class="project-tag">Chlorophyll Measurement</span>
+        <span class="project-tag">Experimental Design</span>
+        <span class="project-tag">Algal Biotechnology</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-card reveal">
+    <div class="project-num">02</div>
+    <div>
+      <div class="project-meta">
+        <span>📍 Community Outreach</span>
+        <span>📅 UNEP Initiative</span>
+      </div>
+      <div class="project-title">Tide Turners Plastic Challenge — UNEP</div>
+      <p class="project-desc">
+        Led school awareness sessions, cleanliness drives, and community outreach programs to reduce single-use plastic consumption. Engaged with local stakeholders to foster behavioral change around plastic waste, aligning with UNEP's global plastic reduction goals.
+      </p>
+      <div class="project-tags">
+        <span class="project-tag">Plastic Waste</span>
+        <span class="project-tag">Community Engagement</span>
+        <span class="project-tag">UNEP</span>
+        <span class="project-tag">Sustainability</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-card reveal">
+    <div class="project-num">03</div>
+    <div>
+      <div class="project-meta">
+        <span>📍 CSE Training Centre</span>
+        <span>📅 Residential Programme</span>
+      </div>
+      <div class="project-title">Sustainable Solid Waste Management — CSE</div>
+      <p class="project-desc">
+        Participated in a residential training programme organized by the Centre for Science and Environment (CSE) focused on sustainable solid waste management strategies, including segregation, composting, recycling systems, and policy frameworks relevant to Indian urban contexts.
+      </p>
+      <div class="project-tags">
+        <span class="project-tag">Waste Management</span>
+        <span class="project-tag">CSE</span>
+        <span class="project-tag">Urban Sustainability</span>
+        <span class="project-tag">Policy</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-label reveal">Credentials</div>
+  <h2 class="section-title reveal">Certifications<br>& Training</h2>
+  <div class="cert-timeline">
+    <div class="cert-item">
+      <div class="cert-org">GATE — IIT/NTA</div>
+      <div class="cert-title">GATE 2026 Qualified — AIR 1131</div>
+      <p class="cert-desc">Qualified Graduate Aptitude Test in Engineering (GATE) 2026 in Environmental Science & Engineering with All India Rank 1131.</p>
+    </div>
+    <div class="cert-item">
+      <div class="cert-org">World Health Organization (WHO)</div>
+      <div class="cert-title">OpenWHO — 10+ Health & Environment Courses</div>
+      <p class="cert-desc">Emergency SOPs, Health Security Preparedness, Medical Oxygen Systems, Air Pollution & Health, Water Safety Planning, Healthy Cities Framework, AMR in the Environment, NCDs in Primary Health Care, Infection Prevention, One Health.</p>
+    </div>
+    <div class="cert-item">
+      <div class="cert-org">NPTEL – SWAYAM (IITs)</div>
+      <div class="cert-title">Conservation Geography (Elite + Gold)</div>
+      <p class="cert-desc">Achieved Elite + Gold distinction in Conservation Geography. Also completed Forests and Their Management, Environment and Development, and Soft Skills (Elite + Silver).</p>
+    </div>
+    <div class="cert-item">
+      <div class="cert-org">Centre for Science & Environment (CSE)</div>
+      <div class="cert-title">Sustainable Solid Waste Management</div>
+      <p class="cert-desc">Residential training programme covering integrated waste management, composting technologies, and sustainable urban policy frameworks.</p>
+    </div>
+    <div class="cert-item">
+      <div class="cert-org">UNEP</div>
+      <div class="cert-title">Tide Turners Plastic Challenge</div>
+      <p class="cert-desc">Led awareness and reduction campaigns at school level, driving community impact around single-use plastic reduction.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label reveal">Let's Talk</div>
+  <h2 class="section-title reveal">Open to Opportunities</h2>
+  <p class="contact-sub reveal">Seeking research positions, internships, and collaborations in environmental science, sustainability consulting, and public health sectors.</p>
+  <div class="contact-links reveal">
+    <a href="tel:+918619755455" class="contact-link">
+      <span class="icon">📞</span>
+      <div class="info">
+        <span class="label2">Phone</span>
+        <span class="value">+91 86197 55455</span>
+      </div>
+    </a>
+    <a href="mailto:meenaunjan45@gmail.com" class="contact-link">
+      <span class="icon">✉️</span>
+      <div class="info">
+        <span class="label2">Email</span>
+        <span class="value">meenaunjan45@gmail.com</span>
+      </div>
+    </a>
+    <a href="https://www.linkedin.com/in/gunjan-meena-b386b933b" target="_blank" class="contact-link">
+      <span class="icon">🔗</span>
+      <div class="info">
+        <span class="label2">LinkedIn</span>
+        <span class="value">gunjan-meena</span>
+      </div>
+    </a>
+    <a href="#" class="contact-link">
+      <span class="icon">📍</span>
+      <div class="info">
+        <span class="label2">Location</span>
+        <span class="value">Sikar, Rajasthan</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Gunjan Meena &nbsp;·&nbsp; Environmental Scientist &nbsp;·&nbsp; Central University of Rajasthan</p>
+</footer>
+
+<script>
+  // CURSOR
+  const cursor = document.getElementById('cursor');
+  const cursorRing = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx - 6 + 'px';
+    cursor.style.top = my - 6 + 'px';
+  });
+  function animRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    cursorRing.style.left = rx - 18 + 'px';
+    cursorRing.style.top = ry - 18 + 'px';
+    requestAnimationFrame(animRing);
+  }
+  animRing();
+  document.querySelectorAll('a, button, .stat-box, .skill-card').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.transform = 'scale(2.5)';
+      cursorRing.style.transform = 'scale(1.5)';
+      cursorRing.style.opacity = '0.3';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.transform = 'scale(1)';
+      cursorRing.style.transform = 'scale(1)';
+      cursorRing.style.opacity = '0.6';
+    });
+  });
+
+  // SCROLL PROGRESS
+  const pb = document.getElementById('progressBar');
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    pb.style.width = (scrolled * 100) + '%';
+  });
+
+  // NAVBAR
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 80);
+  });
+
+  // REVEAL ON SCROLL
+  const reveals = document.querySelectorAll('.reveal, .cert-item');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // COUNT-UP ANIMATION
+  const counters = document.querySelectorAll('[data-target]');
+  const counterObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.dataset.target);
+      const duration = 1800;
+      const step = target / (duration / 16);
+      let current = 0;
+      const timer = setInterval(() => {
+        current = Math.min(current + step, target);
+        el.textContent = Math.floor(current).toLocaleString();
+        if (current >= target) clearInterval(timer);
+      }, 16);
+      counterObs.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => counterObs.observe(c));
+
+  // PARTICLE CANVAS
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+  function resize() {
+    const hero = document.getElementById('hero');
+    W = canvas.width = hero.offsetWidth;
+    H = canvas.height = hero.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  for (let i = 0; i < 60; i++) {
+    particles.push({
+      x: Math.random() * 2000, y: Math.random() * 900,
+      vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3,
+      size: Math.random() * 2 + 0.5,
+      alpha: Math.random() * 0.4 + 0.1
+    });
+  }
+  function drawParticles() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+      if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(143,191,160,${p.alpha})`;
+      ctx.fill();
+    });
+    // Draw connections
+    particles.forEach((p, i) => {
+      particles.slice(i + 1).forEach(q => {
+        const d = Math.hypot(p.x - q.x, p.y - q.y);
+        if (d < 120) {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(q.x, q.y);
+          ctx.strokeStyle = `rgba(143,191,160,${0.08 * (1 - d / 120)})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      });
+    });
+    requestAnimationFrame(drawParticles);
+  }
+  drawParticles();
+
+  // LEAF FLOATERS
+  const hero = document.getElementById('hero');
+  const leafShapes = ['🌿', '🍃', '🌱'];
+  for (let i = 0; i < 6; i++) {
+    const el = document.createElement('div');
+    el.className = 'leaf-float';
+    el.style.left = Math.random() * 100 + '%';
+    el.style.fontSize = (Math.random() * 20 + 16) + 'px';
+    el.style.animationDuration = (Math.random() * 15 + 10) + 's';
+    el.style.animationDelay = (Math.random() * 10) + 's';
+    el.textContent = leafShapes[Math.floor(Math.random() * leafShapes.length)];
+    hero.appendChild(el);
+  }
+</script>
+</body>
+</html>
